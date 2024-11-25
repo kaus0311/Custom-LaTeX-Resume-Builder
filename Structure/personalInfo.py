@@ -1,3 +1,5 @@
+from string import Template
+
 class personalInfo:
     def __init__(self, number, mail, linkedin, github):
         self.number = number
@@ -5,9 +7,30 @@ class personalInfo:
         self.linkedin = linkedin
         self.github = github
     
+    from string import Template
+
     def getLatex(self):
-        
-		# \href[pdfnewwindow=true]{tel:+16232122089}{\scalebox{1.2}{\faMobilePhone} \ +1 (623) 212-2089} \\ 
-		# \href[pdfnewwindow=true]{mailto:aniket.patil1406@gmail.com}{\faEnvelope \ \underline{aniket.patil1406@gmail.com}} \\ 
-		# \href[pdfnewwindow=true]{https://www.linkedin.com/in/apatil1406}{\faLinkedin \ \underline{linkedin.com/in/apatil1406}} \\ 
-		# \href[pdfnewwindow=true]{https://www.github.com/patil-aniket}{\faGithub \ \underline{github.com/patil-aniket}}
+        result = []
+
+        if self.number:
+            template = Template(r"\href[pdfnewwindow=true]{tel:+$number}{\scalebox{1.2}{\faMobilePhone} \ $number} \\")
+            numScript = template.substitute(number=self.number)
+            result.append(numScript)
+
+        if self.mail:
+            template = Template(r"\href[pdfnewwindow=true]{mailto:$mail}{\faEnvelope \ \underline{$mail}} \\")
+            mailScript = template.substitute(mail=self.mail)
+            result.append(mailScript)
+
+        if self.linkedin:
+            template = Template(r"\href[pdfnewwindow=true]{$linkedin}{\faLinkedin \ \underline{$linkedin}} \\")
+            linkedinScript = template.substitute(linkedin=self.linkedin)
+            result.append(linkedinScript)
+
+        if self.github:
+            template = Template(r"\href[pdfnewwindow=true]{$github}{\faGithub \ \underline{$github}} \\")
+            githubScript = template.substitute(github=self.github)
+            result.append(githubScript)
+
+        return r"""\address""" + "\n\t{\n\t\t" + "\n\t\t".join(result) + "\n\t}"
+
