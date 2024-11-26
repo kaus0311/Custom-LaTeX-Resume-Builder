@@ -8,4 +8,4 @@ class section:
         self.subSection
     
     def getLatex(self):
-        return ""
+        return self.content
