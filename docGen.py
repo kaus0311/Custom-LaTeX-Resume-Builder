@@ -37,7 +37,7 @@ def clean_auxiliary_files(doc_name):
     """
     Removes LaTeX auxiliary files generated during compilation.
     """
-    extensions = [".aux", ".log", ".out", ".tex"]
+    extensions = [".aux", ".log", ".out"]
     for ext in extensions:
         file_path = f"{doc_name}{ext}"
         try:

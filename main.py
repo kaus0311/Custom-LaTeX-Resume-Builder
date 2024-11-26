@@ -3,7 +3,7 @@ from Structure.info import info
 from Structure.personalInfo import personalInfo
 
 name = "Kaustubh"
-phone = "6027578002"
+phone = "+16027578002"
 email = "knegi2@asu.edu"
 
 addPersonalInfo = personalInfo(phone, email, "", "")

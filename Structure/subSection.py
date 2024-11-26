@@ -5,5 +5,5 @@ class subSection():
     def addDate(self, date):
         self.date = date
     
-    def addContent(self, content):
-        self.addPoint()
+    def getLatex(self):
+        return ""
